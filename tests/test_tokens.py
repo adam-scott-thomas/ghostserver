@@ -1,10 +1,10 @@
 from unittest.mock import patch, MagicMock
-from conduit.tokens import TokenStore
+from ghostserver.tokens import TokenStore
 
 
 def test_get_token_calls_op():
     store = TokenStore()
-    with patch("conduit.tokens.subprocess") as mock_sub:
+    with patch("ghostserver.tokens.subprocess") as mock_sub:
         mock_sub.run.return_value = MagicMock(
             returncode=0, stdout="ghp_abc123\n"
         )
@@ -18,7 +18,7 @@ def test_get_token_calls_op():
 
 def test_get_token_raises_on_failure():
     store = TokenStore()
-    with patch("conduit.tokens.subprocess") as mock_sub:
+    with patch("ghostserver.tokens.subprocess") as mock_sub:
         mock_sub.run.return_value = MagicMock(returncode=1, stderr="not signed in")
         try:
             store.get("op://Dev/GH/token")
@@ -29,7 +29,7 @@ def test_get_token_raises_on_failure():
 
 def test_get_token_caches():
     store = TokenStore()
-    with patch("conduit.tokens.subprocess") as mock_sub:
+    with patch("ghostserver.tokens.subprocess") as mock_sub:
         mock_sub.run.return_value = MagicMock(returncode=0, stdout="tok123\n")
         store.get("op://Dev/GH/token")
         store.get("op://Dev/GH/token")
@@ -38,7 +38,7 @@ def test_get_token_caches():
 
 def test_refresh_google_token():
     store = TokenStore()
-    with patch("conduit.tokens.httpx") as mock_httpx:
+    with patch("ghostserver.tokens.httpx") as mock_httpx:
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = {
@@ -57,11 +57,11 @@ def test_refresh_google_token():
 
 def test_clear_cache():
     store = TokenStore()
-    with patch("conduit.tokens.subprocess") as mock_sub:
+    with patch("ghostserver.tokens.subprocess") as mock_sub:
         mock_sub.run.return_value = MagicMock(returncode=0, stdout="tok\n")
         store.get("op://Dev/GH/token")
     store.clear_cache()
-    with patch("conduit.tokens.subprocess") as mock_sub:
+    with patch("ghostserver.tokens.subprocess") as mock_sub:
         mock_sub.run.return_value = MagicMock(returncode=0, stdout="tok2\n")
         result = store.get("op://Dev/GH/token")
     assert result == "tok2"

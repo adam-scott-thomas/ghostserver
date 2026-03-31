@@ -3,9 +3,9 @@ import respx
 import httpx
 from fastmcp import Client
 from spine import Core
-from conduit.config import Config, GoogleConfig
-from conduit.gate import reset_counters
-from conduit.adapters.gmail import server as gmail_server
+from ghostserver.config import Config, GoogleConfig
+from ghostserver.gate import reset_counters
+from ghostserver.adapters.gmail import server as gmail_server
 
 # Import MockTokenStore from shared conftest
 from tests.adapters.conftest import MockTokenStore

@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import MagicMock
 from spine import Core
-from conduit.config import Config, ServiceConfig, GoogleConfig, AwsConfig
-from conduit.gate import reset_counters
+from ghostserver.config import Config, ServiceConfig, GoogleConfig, AwsConfig
+from ghostserver.gate import reset_counters
 
 
 class MockTokenStore:

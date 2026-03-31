@@ -1,14 +1,14 @@
 import pytest
 import respx
 import httpx
-from conduit.adapters.cloudflare import server as cf_server
+from ghostserver.adapters.cloudflare import server as cf_server
 
 
 @pytest.fixture
 def cf_core():
     from spine import Core
-    from conduit.config import Config, ServiceConfig
-    from conduit.gate import reset_counters
+    from ghostserver.config import Config, ServiceConfig
+    from ghostserver.gate import reset_counters
     from tests.adapters.conftest import MockTokenStore
 
     config = Config(cloudflare=ServiceConfig(

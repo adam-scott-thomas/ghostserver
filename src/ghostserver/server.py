@@ -5,7 +5,7 @@ from pathlib import Path
 
 from fastmcp import FastMCP
 
-from conduit.boot import boot
+from ghostserver.boot import boot
 
 
 def create_server(config_path: Path | None = None) -> FastMCP:
@@ -13,14 +13,14 @@ def create_server(config_path: Path | None = None) -> FastMCP:
     config = core.get("config")
 
     main = FastMCP(
-        name="Conduit",
+        name="Ghostserver",
         instructions=(
             "Local MCP server connecting to GitHub, Gmail, Google Calendar, "
             "Cloudflare, and AWS. All tokens stored locally via 1Password."
         ),
     )
 
-    from conduit.adapters import discover
+    from ghostserver.adapters import discover
 
     for service_name, mod in discover():
         if config.is_enabled(service_name):

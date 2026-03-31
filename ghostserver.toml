@@ -1,4 +1,4 @@
-# conduit.toml — Conduit MCP Server Configuration
+# ghostserver.toml — Ghostserver MCP Server Configuration
 # Token refs are 1Password secret references: op://Vault/Item/Field
 
 [github]

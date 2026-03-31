@@ -5,10 +5,10 @@ from pathlib import Path
 
 from spine import Core
 
-from conduit.config import load_config
-from conduit.tokens import TokenStore
+from ghostserver.config import load_config
+from ghostserver.tokens import TokenStore
 
-DEFAULT_CONFIG = Path(__file__).parent.parent.parent / "conduit.toml"
+DEFAULT_CONFIG = Path(__file__).parent.parent.parent / "ghostserver.toml"
 
 
 def boot(config_path: Path | None = None) -> Core:

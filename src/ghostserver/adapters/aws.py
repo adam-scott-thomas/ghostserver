@@ -8,7 +8,7 @@ from fastmcp import FastMCP
 from pydantic import Field
 from spine import Core
 
-from conduit.gate import check_gate
+from ghostserver.gate import check_gate
 
 SERVICE = "aws"
 

@@ -8,9 +8,9 @@ import pytest
 from fastmcp import Client
 from spine import Core
 
-from conduit.adapters.aws import server as aws_server
-from conduit.config import AwsConfig, Config
-from conduit.gate import reset_counters
+from ghostserver.adapters.aws import server as aws_server
+from ghostserver.config import AwsConfig, Config
+from ghostserver.gate import reset_counters
 from tests.adapters.conftest import MockTokenStore
 
 
@@ -50,7 +50,7 @@ async def test_aws_list_buckets(aws_core):
         ]
     }
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_list_buckets", {})
 
@@ -68,7 +68,7 @@ async def test_aws_list_buckets_empty(aws_core):
     mock_boto3.client.return_value = mock_s3
     mock_s3.list_buckets.return_value = {"Buckets": []}
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_list_buckets", {})
 
@@ -91,7 +91,7 @@ async def test_aws_list_objects(aws_core):
         ]
     }
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_list_objects", {
                 "bucket": "my-bucket",
@@ -122,7 +122,7 @@ async def test_aws_list_objects_empty_prefix(aws_core):
         ]
     }
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_list_objects", {"bucket": "my-bucket"})
 
@@ -159,7 +159,7 @@ async def test_aws_describe_instances(aws_core):
         ]
     }
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_describe_instances", {"instance_ids": ["i-0abc123"]})
 
@@ -181,7 +181,7 @@ async def test_aws_describe_instances_all(aws_core):
     mock_boto3.client.return_value = mock_ec2
     mock_ec2.describe_instances.return_value = {"Reservations": []}
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_describe_instances", {})
 
@@ -206,7 +206,7 @@ async def test_aws_cloudwatch_metrics(aws_core):
         ]
     }
 
-    with patch("conduit.adapters.aws.boto3", mock_boto3):
+    with patch("ghostserver.adapters.aws.boto3", mock_boto3):
         async with Client(aws_server) as client:
             result = await client.call_tool("aws_cloudwatch_metrics", {"namespace": "AWS/EC2"})
 

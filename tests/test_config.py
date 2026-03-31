@@ -1,5 +1,5 @@
 from pathlib import Path
-from conduit.config import load_config, Config, ServiceConfig, GoogleConfig, AwsConfig
+from ghostserver.config import load_config, Config, ServiceConfig, GoogleConfig, AwsConfig
 
 
 def test_load_config_from_toml(tmp_path: Path):

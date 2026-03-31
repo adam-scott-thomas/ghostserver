@@ -14,7 +14,7 @@ def discover() -> list[tuple[str, "ModuleType"]]:
     adapters = []
     for name in ["github", "gmail", "gcal", "cloudflare", "aws"]:
         try:
-            mod = importlib.import_module(f"conduit.adapters.{name}")
+            mod = importlib.import_module(f"ghostserver.adapters.{name}")
             if hasattr(mod, "server") and hasattr(mod, "SERVICE"):
                 adapters.append((mod.SERVICE, mod))
         except ImportError:

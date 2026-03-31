@@ -1,7 +1,7 @@
 import pytest
 import respx
 import httpx
-from conduit.adapters.github import server as github_server
+from ghostserver.adapters.github import server as github_server
 
 
 @respx.mock

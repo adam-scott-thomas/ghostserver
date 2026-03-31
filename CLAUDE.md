@@ -1,4 +1,4 @@
-# Conduit — Local MCP Server
+# Ghostserver — Local MCP Server
 
 Self-hosted MCP server connecting Claude Code to GitHub, Gmail, Google Calendar, Cloudflare, and AWS. All tokens stored locally via 1Password. No cloud proxy.
 
@@ -7,9 +7,9 @@ Self-hosted MCP server connecting Claude Code to GitHub, Gmail, Google Calendar,
 ```bash
 pip install -e ".[dev]"
 # One-time: set up Google OAuth
-python -m conduit.google_auth
+python -m ghostserver.google_auth
 # Run server
-python -m conduit
+python -m ghostserver
 ```
 
 ## Architecture
@@ -21,7 +21,7 @@ python -m conduit
 
 ## Config
 
-Edit `conduit.toml` to enable/disable services and set 1Password token references.
+Edit `ghostserver.toml` to enable/disable services and set 1Password token references.
 
 ## Tests
 
@@ -39,7 +39,7 @@ pytest -v
 
 ## Adding a new adapter
 
-1. Create `src/conduit/adapters/{name}.py`
+1. Create `src/ghostserver/adapters/{name}.py`
 2. Define `SERVICE = "{name}"` and `server = FastMCP("{Name}")`
 3. Add `@server.tool` functions that call `check_gate(SERVICE)` first
 4. Add the service to `Config` in `config.py`

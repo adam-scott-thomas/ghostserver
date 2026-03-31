@@ -1,4 +1,4 @@
-"""One-time Google OAuth2 setup. Run: python -m conduit.google_auth"""
+"""One-time Google OAuth2 setup. Run: python -m ghostserver.google_auth"""
 from __future__ import annotations
 
 import json
@@ -41,9 +41,9 @@ def _op_write(ref: str, value: str) -> None:
 
 
 def _load_google_config():
-    """Load conduit config and return the GoogleConfig section."""
-    from conduit.config import load_config
-    config_path = Path(__file__).parent.parent.parent / "conduit.toml"
+    """Load ghostserver config and return the GoogleConfig section."""
+    from ghostserver.config import load_config
+    config_path = Path(__file__).parent.parent.parent / "ghostserver.toml"
     config = load_config(config_path)
     return config.google
 
@@ -112,16 +112,16 @@ def _run_callback_server() -> str:
 
 
 def main() -> None:
-    print("=== Conduit — Google OAuth2 Setup ===\n")
+    print("=== Ghostserver — Google OAuth2 Setup ===\n")
 
     # Load config
-    print("Loading conduit config...")
+    print("Loading ghostserver config...")
     google = _load_google_config()
 
     if not google.client_id_ref or not google.client_secret_ref or not google.refresh_token_ref:
         raise RuntimeError(
             "google.client_id_ref, client_secret_ref, and refresh_token_ref must all be "
-            "set in conduit.toml before running this setup."
+            "set in ghostserver.toml before running this setup."
         )
 
     scopes = google.scopes or [

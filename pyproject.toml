@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "conduit"
+name = "ghostserver"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
@@ -24,7 +24,7 @@ dev = [
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/conduit"]
+packages = ["src/ghostserver"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

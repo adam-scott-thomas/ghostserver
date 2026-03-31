@@ -1,8 +1,8 @@
 import time
 from unittest.mock import MagicMock
 from spine import Core
-from conduit.gate import check_gate, ServiceDisabled, RateLimitExceeded, reset_counters
-from conduit.config import Config, ServiceConfig
+from ghostserver.gate import check_gate, ServiceDisabled, RateLimitExceeded, reset_counters
+from ghostserver.config import Config, ServiceConfig
 
 
 def _boot_with(github_enabled=True, rate_limit=10, rate_window=60):
@@ -56,6 +56,6 @@ def test_gate_resets_after_window(monkeypatch):
     reset_counters()
     check_gate("github")
     # Simulate time passing
-    import conduit.gate as gm
+    import ghostserver.gate as gm
     gm._windows["github"] = [time.time() - 2]
     check_gate("github")  # should pass — old entry expired
