@@ -1,0 +1,34 @@
+# conduit.toml — Conduit MCP Server Configuration
+# Token refs are 1Password secret references: op://Vault/Item/Field
+
+[github]
+enabled = true
+token_ref = "op://Development/GitHub PAT/credential"
+rate_limit = 5000
+rate_window = 3600
+
+[google]
+enabled = true
+client_id_ref = "op://Development/Google OAuth Client/client_id"
+client_secret_ref = "op://Development/Google OAuth Client/client_secret"
+refresh_token_ref = "op://Development/Google OAuth Client/refresh_token"
+scopes = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/calendar.events",
+    "https://www.googleapis.com/auth/calendar.readonly",
+]
+rate_limit = 500
+rate_window = 100
+
+[cloudflare]
+enabled = true
+token_ref = "op://Development/Cloudflare API Token/credential"
+rate_limit = 1200
+rate_window = 300
+
+[aws]
+enabled = true
+region = "us-east-1"
+rate_limit = 100
+rate_window = 1
