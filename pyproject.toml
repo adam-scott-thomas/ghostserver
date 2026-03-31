@@ -5,13 +5,31 @@ build-backend = "hatchling.build"
 [project]
 name = "ghostserver"
 version = "0.1.0"
+description = "Self-hosted MCP server connecting AI tools to GitHub, Gmail, Google Calendar, Cloudflare, and AWS"
+readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12"
+authors = [
+    { name = "Adam Thomas", email = "adam@ghostlogic.dev" },
+]
+keywords = ["mcp", "model-context-protocol", "ai", "tools", "github", "gmail", "cloudflare", "aws"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+]
 dependencies = [
     "fastmcp>=2.0",
     "httpx>=0.27",
     "boto3>=1.35",
-    "maelspine @ file:///D:/lost_marbles/maelspine",
+    "maelspine>=0.1.1",
 ]
+
+[project.urls]
+Homepage = "https://github.com/adam-scott-thomas/ghostserver"
+Repository = "https://github.com/adam-scott-thomas/ghostserver"
+Issues = "https://github.com/adam-scott-thomas/ghostserver/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -19,9 +37,6 @@ dev = [
     "pytest-asyncio>=0.24",
     "respx>=0.22",
 ]
-
-[tool.hatch.metadata]
-allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ghostserver"]
