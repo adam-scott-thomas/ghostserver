@@ -34,11 +34,18 @@ class AwsConfig:
 
 
 @dataclass
+class ServerConfig:
+    credential_backend: str = "auto"
+    credential_file: str = "~/.ghostserver/credentials"
+
+
+@dataclass
 class Config:
     github: ServiceConfig = field(default_factory=ServiceConfig)
     google: GoogleConfig = field(default_factory=GoogleConfig)
     cloudflare: ServiceConfig = field(default_factory=ServiceConfig)
     aws: AwsConfig = field(default_factory=AwsConfig)
+    server: ServerConfig = field(default_factory=ServerConfig)
 
     def service_names(self) -> list[str]:
         return ["github", "google", "cloudflare", "aws"]
@@ -59,4 +66,5 @@ def load_config(path: Path) -> Config:
         google=GoogleConfig(**raw.get("google", {})),
         cloudflare=ServiceConfig(**raw.get("cloudflare", {})),
         aws=AwsConfig(**raw.get("aws", {})),
+        server=ServerConfig(**raw.get("server", {})),
     )
