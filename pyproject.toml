@@ -7,7 +7,7 @@ name = "ghostserver"
 version = "0.1.0"
 description = "Self-hosted MCP server connecting AI tools to GitHub, Gmail, Google Calendar, Cloudflare, and AWS"
 readme = "README.md"
-license = "MIT"
+license = "Apache-2.0"
 requires-python = ">=3.12"
 authors = [
     { name = "Adam Thomas", email = "adam@ghostlogic.dev" },
@@ -15,7 +15,7 @@ authors = [
 keywords = ["mcp", "model-context-protocol", "ai", "tools", "github", "gmail", "cloudflare", "aws"]
 classifiers = [
     "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries",
 ]
