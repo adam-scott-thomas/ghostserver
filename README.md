@@ -1,5 +1,7 @@
 # GhostServer
 
+**English** · [中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Русский](README.ru.md) · [Deutsch](README.de.md)
+
 Self-hosted MCP server that connects any AI tool to your real accounts. Your tokens never leave your machine.
 
 Works with Claude Code, Cursor, VS Code Copilot, Windsurf, and any MCP-compatible client.
